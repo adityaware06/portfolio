@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "siteTitle": "Aditya Ajay Ware — ETL & Data",
+    "siteDescription": "ETL Developer, Data Analyst, and Data Engineer with 2.9+ years at Amdocs — Azure Databricks, SQL Server, Power BI, and data pipeline automation."
+  },
+  "person": {
+    "name": "Aditya Ajay Ware",
+    "headline": "ETL Developer · Data Analyst · Data Engineer",
+    "targetRoles": ["ETL Developer", "Data Analyst", "Data Engineer"],
+    "tagline": "2.9+ years building and operating ETL pipelines, data warehouses, and BI solutions — from raw data to reliable analytics and stakeholder-ready dashboards.",
+    "location": "Pune, India",
+    "email": "adityaware07@gmail.com",
+    "phone": "+91 7066214113",
+    "avatarInitials": "AW",
+    "links": [
+      { "label": "Email", "url": "mailto:adityaware07@gmail.com" },
+      { "label": "GitHub", "url": "https://github.com/adityaware" }
+    ]
+  },
+  "about": [
+    "2.9+ years of experience in ETL development, data analysis, and data engineering with a strong background in data warehousing, data pipelines, and business intelligence.",
+    "Hands-on experience in extract, transform, load (ETL) using Azure Databricks, SQL Server, and stored procedures for data processing and automation.",
+    "Skilled in data analysis, reporting, and dashboards via Power BI; maintaining data quality, SLA, and KPI compliance for downstream systems.",
+    "Experience in building and optimizing data pipelines, data integration, and zero-touch automation in production environments. Seeking a role focused on data orchestration, analytics, and engineering excellence."
+  ],
+  "experience": [
+    {
+      "role": "Technical & Business Operation Analyst",
+      "company": "Amdocs",
+      "period": "Aug 2023 — Present",
+      "location": "",
+      "bullets": [
+        "Maintain and optimize ETL pipelines for data orchestration, integration, and data engineering workflows using Azure Databricks and SQL Server.",
+        "Perform data analysis and data validation; enhance data warehouse performance through indexing and streamlined ETL to meet KPIs and SLAs.",
+        "Ensure data quality, availability, and consistency for downstream systems, reporting, and business decision-making.",
+        "Manage scheduling and timely execution of data jobs so data is ready for analytics, dashboards, and end users.",
+        "Monitor database and system health using diagnostic tools; implement zero-touch automation in lower and production to reduce manual errors.",
+        "Build and validate Power BI reports and data trending for stakeholders; support business intelligence and data-driven insights."
+      ]
+    }
+  ],
+  "featuredProject": {
+    "title": "Analytical Business Intelligence (ABI) — Cricket Wireless (AT&T)",
+    "tags": ["ETL", "Data Engineering", "Data Analysis", "Business Intelligence"],
+    "bullets": [
+      "Built and maintained an automated data warehouse and ETL pipelines; transformed raw data into structured ABI metadata for analytics and reporting.",
+      "Developed data integration and orchestration workflows; integrated with Power BI for dashboards, visualization, and stakeholder reports.",
+      "Optimized ETL and pipeline performance via indexing and automation to achieve KPIs and SLAs.",
+      "Performed data analysis, validation, and trending; ensured data quality and availability for downstream systems.",
+      "Managed job scheduling and execution; implemented zero-touch automation in lower and production environments.",
+      "Monitored database and system health; supported BI and data-driven insights for the business."
+    ]
+  },
+  "skills": [
+    {
+      "category": "ETL & Data Engineering",
+      "items": [
+        "ETL",
+        "Data pipelines",
+        "Data integration",
+        "Data warehousing",
+        "Azure Databricks",
+        "Data orchestration"
+      ]
+    },
+    {
+      "category": "Databases",
+      "items": ["SQL Server"]
+    },
+    {
+      "category": "Data Analysis & BI",
+      "items": [
+        "Data analysis",
+        "Power BI",
+        "Azure Analysis Services",
+        "Reporting",
+        "Data validation",
+        "KPI / SLA"
+      ]
+    },
+    {
+      "category": "Languages",
+      "items": ["Python", "SQL", "C"]
+    },
+    {
+      "category": "Tools & Platforms",
+      "items": [
+        "Azure DevOps (ADO)",
+        "Azure Gateway",
+        "SQL Server Management Studio (SSMS)",
+        "Jenkins",
+        "Jira",
+        "Kibana",
+        "Grafana",
+        "Prometheus",
+        "ServiceNow",
+        "Task Scheduler",
+        "Graylog",
+        "Eclipse",
+        "Spyder",
+        "Anaconda",
+        "PuTTY"
+      ]
+    },
+    {
+      "category": "Operating Systems",
+      "items": ["Windows", "macOS"]
+    },
+    {
+      "category": "Soft skills",
+      "items": ["Communication", "Teamwork", "Quick learner", "Detail-oriented"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "MCA",
+      "school": "ASM's Institute of Business Management & Research, Pune — Savitribai Phule Pune University",
+      "period": "2025 (Expected)",
+      "detail": "60.03%"
+    },
+    {
+      "degree": "BBA-CA",
+      "school": "MIT Arts, Commerce & Science College, Alandi — Savitribai Phule Pune University",
+      "period": "2023",
+      "detail": "67.00%"
+    },
+    {
+      "degree": "12th (HSC)",
+      "school": "Haribhau Desai, Pune — Maharashtra State Board",
+      "period": "2020",
+      "detail": "65.69%"
+    },
+    {
+      "degree": "10th (SSC)",
+      "school": "Dr. Anna Saheb Chobe High School, Talegaon Dabhade — Maharashtra State Board",
+      "period": "2018",
+      "detail": "73.20%"
+    }
+  ],
+  "achievements": [
+    "Certified in Azure Databricks AI agent fundamentals (with badge)",
+    "Award from Line Manager at Amdocs Town Hall",
+    "Amdocs Appreciation Award for completing AZure Databrick AI agentic fundamentals course",
+    "Recognized by management for outstanding teamwork during challenging project delivery",
+    "Client recognition for dedication, clean work, and detailed investigation",
+    "Cash coupon award from higher management (twice)",
+    "Man of the Match, AT&T Cricket Tournament Season 2"
+  ],
+  "github": {
+    "username": "adityaware",
+    "maxRepos": 6,
+    "excludeForks": true,
+    "pinnedRepos": []
+  },
+  "projectsManual": [
+    {
+      "name": "GitHub profile",
+      "description": "Browse all public repositories — live list loads below when the GitHub API is available.",
+      "url": "https://github.com/adityaware?tab=repositories",
+      "language": "",
+      "stars": null,
+      "topics": ["open-source"]
+    }
+  ]
+}
