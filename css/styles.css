@@ -1030,27 +1030,33 @@ section {
   margin-bottom: 0;
 }
 
-/* Scroll reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* Scroll motion (never hide with opacity:0 — that caused blank pages if IntersectionObserver did not fire) */
+.reveal,
 .reveal--child {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
-}
-
-.reveal--child.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 1;
+    transform: translateY(14px);
+    transition: transform 0.65s var(--ease-out);
+  }
+
+  .reveal.is-visible {
+    transform: translateY(0);
+  }
+
+  .reveal--child {
+    opacity: 1;
+    transform: translateY(10px);
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .reveal--child.is-visible {
+    transform: translateY(0);
+  }
 }
 
 .project-grid .reveal--child:nth-child(1) {

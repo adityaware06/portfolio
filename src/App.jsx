@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { fetchGithubRepos, pickRepos } from "./githubUtils.js";
 
 const NAV_LINKS = [
@@ -47,7 +47,19 @@ function useScrollSpy(profileReady) {
   }, [profileReady]);
 }
 
+function markInViewVisible() {
+  document.querySelectorAll(".reveal, .reveal--child").forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < window.innerHeight) el.classList.add("is-visible");
+  });
+}
+
 function useReveal(profile, projectCards) {
+  useLayoutEffect(() => {
+    if (!profile) return;
+    markInViewVisible();
+  }, [profile, projectCards]);
+
   useEffect(() => {
     if (!profile) return;
 
@@ -57,17 +69,24 @@ function useReveal(profile, projectCards) {
           if (e.isIntersecting) e.target.classList.add("is-visible");
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.06 }
+      { rootMargin: "0px 0px 0px 0px", threshold: 0.01 }
     );
 
     const observeAll = () => {
-      document.querySelectorAll(".reveal, .reveal--child").forEach((el) => io.observe(el));
+      document.querySelectorAll(".reveal, .reveal--child").forEach((el) => {
+        io.observe(el);
+      });
     };
 
     observeAll();
-    const id = requestAnimationFrame(observeAll);
+    const id = requestAnimationFrame(() => {
+      observeAll();
+      markInViewVisible();
+    });
+    const t = window.setTimeout(markInViewVisible, 250);
     return () => {
       cancelAnimationFrame(id);
+      window.clearTimeout(t);
       io.disconnect();
     };
   }, [profile, projectCards]);
@@ -135,20 +154,31 @@ export default function App() {
   useReveal(profile, projectCards);
 
   useEffect(() => {
-    const base = import.meta.env.BASE_URL;
-    fetch(`${base}data/profile.json`, { cache: "no-store" })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load profile");
-        return res.json();
-      })
-      .then((data) => {
-        setProfile(data);
-        const m = data.meta || {};
-        if (m.siteTitle) document.title = m.siteTitle;
-        const desc = document.querySelector('meta[name="description"]');
-        if (desc && m.siteDescription) desc.setAttribute("content", m.siteDescription);
-      })
-      .catch(() => setLoadError("Could not load profile data."));
+    const raw = import.meta.env.BASE_URL || "/portfolio/";
+    const base = raw.endsWith("/") ? raw : `${raw}/`;
+    const urls = [`${base}data/profile.json`, "/portfolio/data/profile.json"];
+
+    const tryFetch = (i) => {
+      if (i >= urls.length) {
+        setLoadError("Could not load profile data.");
+        return;
+      }
+      fetch(urls[i], { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error("Failed to load profile");
+          return res.json();
+        })
+        .then((data) => {
+          setProfile(data);
+          const m = data.meta || {};
+          if (m.siteTitle) document.title = m.siteTitle;
+          const desc = document.querySelector('meta[name="description"]');
+          if (desc && m.siteDescription) desc.setAttribute("content", m.siteDescription);
+        })
+        .catch(() => tryFetch(i + 1));
+    };
+
+    tryFetch(0);
   }, []);
 
   useEffect(() => {
