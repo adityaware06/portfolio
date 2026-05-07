@@ -1,6 +1,35 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { fetchGithubRepos, pickRepos } from "./githubUtils.js";
 
+function LiveClock() {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const dateStr = now.toLocaleDateString("en-IN", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  const timeStr = now.toLocaleTimeString("en-IN", {
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  return (
+    <div className="live-clock" role="timer" aria-live="polite" aria-atomic="true">
+      <span className="live-clock__date">{dateStr}</span>
+      <span className="live-clock__time">{timeStr}</span>
+    </div>
+  );
+}
+
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
@@ -230,17 +259,23 @@ export default function App() {
 
   if (loadError) {
     return (
-      <div className="wrap" style={{ padding: "4rem 0" }}>
-        <p className="banner">{loadError}</p>
-      </div>
+      <>
+        <LiveClock />
+        <div className="wrap" style={{ padding: "4rem 0" }}>
+          <p className="banner">{loadError}</p>
+        </div>
+      </>
     );
   }
 
   if (!profile) {
     return (
-      <div className="wrap" style={{ padding: "4rem 0" }}>
-        <p className="loading">Loading portfolio…</p>
-      </div>
+      <>
+        <LiveClock />
+        <div className="wrap" style={{ padding: "4rem 0" }}>
+          <p className="loading">Loading portfolio…</p>
+        </div>
+      </>
     );
   }
 
@@ -260,6 +295,7 @@ export default function App() {
 
   return (
     <>
+      <LiveClock />
       <div className="page-bg" aria-hidden="true">
         <div className="page-bg__grid" />
         <span className="orb orb--1" />
